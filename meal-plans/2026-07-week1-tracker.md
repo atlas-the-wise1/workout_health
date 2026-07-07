@@ -1,8 +1,10 @@
 # Weekly Meal Prep Tracker - 2026-07-week1
 
 **Goal:** keep the weekly meal-prep loop simple, repeatable, and easy to review
-**Breakfast anchor:** [Clovis Farms Organic Super Smoothie](../recipes/breakfast/clovis-farms-organic-super-smoothie.md) (8/10)
+**Breakfast anchor:** [Clovis Farms Organic Super Smoothie](https://github.com/atlas-the-wise1/recipe_list/blob/main/recipes/breakfast/clovis-farms-organic-super-smoothie.md) (`clovis-farms-organic-super-smoothie`, 8/10)
+**Source commit:** `recipe_list@067c609`
 **Weekly rule:** breakfast is fixed; lunch, dinner, and snacks can rotate from the healthy index
+**Integration note:** `recipe_list` owns recipes and indexes; `workout_health` owns actuals, workouts, and adherence.
 
 ## Weekly Prep Checklist
 
@@ -23,27 +25,27 @@
 - Default effort: moderate, repeatable, and easy to recover from
 - Notes: keep this flexible until the exact workouts are chosen
 
-| Day | Workout | Duration | Check-in |
-|---|---|---|---|
-| Monday | TBD | TBD | [ ] Completed [ ] Mobility done |
-| Tuesday | TBD | TBD | [ ] Completed [ ] Mobility done |
-| Wednesday | TBD | TBD | [ ] Completed [ ] Mobility done |
-| Thursday | TBD | TBD | [ ] Completed [ ] Mobility done |
-| Friday | TBD | TBD | [ ] Completed [ ] Mobility done |
-| Saturday | TBD | TBD | [ ] Completed [ ] Mobility done |
-| Sunday | TBD | TBD | [ ] Completed [ ] Mobility done |
+| Day | Workout ID | Workout | Duration | Intensity | Equipment | Check-in |
+|---|---|---|---|---|---|---|
+| Monday | TBD | TBD | TBD | TBD | TBD | [ ] Completed [ ] Mobility done |
+| Tuesday | TBD | TBD | TBD | TBD | TBD | [ ] Completed [ ] Mobility done |
+| Wednesday | TBD | TBD | TBD | TBD | TBD | [ ] Completed [ ] Mobility done |
+| Thursday | TBD | TBD | TBD | TBD | TBD | [ ] Completed [ ] Mobility done |
+| Friday | TBD | TBD | TBD | TBD | TBD | [ ] Completed [ ] Mobility done |
+| Saturday | TBD | TBD | TBD | TBD | TBD | [ ] Completed [ ] Mobility done |
+| Sunday | TBD | TBD | TBD | TBD | TBD | [ ] Completed [ ] Mobility done |
 
 ## Daily Tracker
 
-| Day | Breakfast | Lunch | Dinner | Prep / Check-in |
-|---|---|---|---|---|
-| Monday | Clovis Farms Organic Super Smoothie (8/10) | TBD | TBD | [ ] Breakfast prepped [ ] Lunch decided [ ] Dinner decided |
-| Tuesday | Clovis Farms Organic Super Smoothie (8/10) | TBD | TBD | [ ] Breakfast prepped [ ] Lunch decided [ ] Dinner decided |
-| Wednesday | Clovis Farms Organic Super Smoothie (8/10) | TBD | TBD | [ ] Breakfast prepped [ ] Lunch decided [ ] Dinner decided |
-| Thursday | Clovis Farms Organic Super Smoothie (8/10) | TBD | TBD | [ ] Breakfast prepped [ ] Lunch decided [ ] Dinner decided |
-| Friday | Clovis Farms Organic Super Smoothie (8/10) | TBD | TBD | [ ] Breakfast prepped [ ] Lunch decided [ ] Dinner decided |
-| Saturday | Clovis Farms Organic Super Smoothie (8/10) | TBD | TBD | [ ] Breakfast prepped [ ] Lunch decided [ ] Dinner decided |
-| Sunday | Clovis Farms Organic Super Smoothie (8/10) | TBD | TBD | [ ] Breakfast prepped [ ] Lunch decided [ ] Dinner decided |
+| Day | Planned Breakfast ID | Planned Breakfast | Actual Breakfast | Lunch | Dinner | Prep / Check-in |
+|---|---|---|---|---|---|---|
+| Monday | clovis-farms-organic-super-smoothie | Clovis Farms Organic Super Smoothie (8/10) | DAVID protein bar + Jif To Go peanut butter + apple | TBD | TBD | [ ] Breakfast prepped [ ] Lunch decided [ ] Dinner decided |
+| Tuesday | clovis-farms-organic-super-smoothie | Clovis Farms Organic Super Smoothie (8/10) | TBD | TBD | TBD | [ ] Breakfast prepped [ ] Lunch decided [ ] Dinner decided |
+| Wednesday | clovis-farms-organic-super-smoothie | Clovis Farms Organic Super Smoothie (8/10) | TBD | TBD | TBD | [ ] Breakfast prepped [ ] Lunch decided [ ] Dinner decided |
+| Thursday | clovis-farms-organic-super-smoothie | Clovis Farms Organic Super Smoothie (8/10) | TBD | TBD | TBD | [ ] Breakfast prepped [ ] Lunch decided [ ] Dinner decided |
+| Friday | clovis-farms-organic-super-smoothie | Clovis Farms Organic Super Smoothie (8/10) | TBD | TBD | TBD | [ ] Breakfast prepped [ ] Lunch decided [ ] Dinner decided |
+| Saturday | clovis-farms-organic-super-smoothie | Clovis Farms Organic Super Smoothie (8/10) | TBD | TBD | TBD | [ ] Breakfast prepped [ ] Lunch decided [ ] Dinner decided |
+| Sunday | clovis-farms-organic-super-smoothie | Clovis Farms Organic Super Smoothie (8/10) | TBD | TBD | TBD | [ ] Breakfast prepped [ ] Lunch decided [ ] Dinner decided |
 
 ## Prep Sessions
 
@@ -60,6 +62,7 @@
 ## Actual Meal Log
 
 - Monday, 2026-07-06: breakfast = DAVID protein bar + Jif To Go peanut butter + apple
+- Monday, 2026-07-06: planned breakfast = clovis-farms-organic-super-smoothie
 
 ## Review Notes
 

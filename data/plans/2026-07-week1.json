@@ -1,0 +1,230 @@
+{
+  "schema_version": 1,
+  "week_id": "2026-07-week1",
+  "source_repo": "atlas-the-wise1/recipe_list",
+  "source_commit": "067c609",
+  "summary": {
+    "breakfast_anchor_recipe_id": "clovis-farms-organic-super-smoothie",
+    "workout_sessions_planned": 3,
+    "mobility_sessions_planned": 2
+  },
+  "days": {
+    "monday": {
+      "meals": {
+        "breakfast": {
+          "planned_recipe_id": "clovis-farms-organic-super-smoothie",
+          "planned_title": "Clovis Farms Organic Super Smoothie",
+          "completed": false,
+          "actual_meal": null
+        },
+        "lunch": {
+          "planned_recipe_id": null,
+          "planned_title": null,
+          "completed": false,
+          "actual_meal": null
+        },
+        "dinner": {
+          "planned_recipe_id": null,
+          "planned_title": null,
+          "completed": false,
+          "actual_meal": null
+        }
+      },
+      "workout": {
+        "planned_workout_id": null,
+        "planned_workout_title": null,
+        "completed": false,
+        "duration_minutes": null,
+        "effort": null,
+        "equipment": null,
+        "recovery_notes": null
+      }
+    },
+    "tuesday": {
+      "meals": {
+        "breakfast": {
+          "planned_recipe_id": "clovis-farms-organic-super-smoothie",
+          "planned_title": "Clovis Farms Organic Super Smoothie",
+          "completed": false,
+          "actual_meal": null
+        },
+        "lunch": {
+          "planned_recipe_id": null,
+          "planned_title": null,
+          "completed": false,
+          "actual_meal": null
+        },
+        "dinner": {
+          "planned_recipe_id": null,
+          "planned_title": null,
+          "completed": false,
+          "actual_meal": null
+        }
+      },
+      "workout": {
+        "planned_workout_id": null,
+        "planned_workout_title": null,
+        "completed": false,
+        "duration_minutes": null,
+        "effort": null,
+        "equipment": null,
+        "recovery_notes": null
+      }
+    },
+    "wednesday": {
+      "meals": {
+        "breakfast": {
+          "planned_recipe_id": "clovis-farms-organic-super-smoothie",
+          "planned_title": "Clovis Farms Organic Super Smoothie",
+          "completed": false,
+          "actual_meal": null
+        },
+        "lunch": {
+          "planned_recipe_id": null,
+          "planned_title": null,
+          "completed": false,
+          "actual_meal": null
+        },
+        "dinner": {
+          "planned_recipe_id": null,
+          "planned_title": null,
+          "completed": false,
+          "actual_meal": null
+        }
+      },
+      "workout": {
+        "planned_workout_id": null,
+        "planned_workout_title": null,
+        "completed": false,
+        "duration_minutes": null,
+        "effort": null,
+        "equipment": null,
+        "recovery_notes": null
+      }
+    },
+    "thursday": {
+      "meals": {
+        "breakfast": {
+          "planned_recipe_id": "clovis-farms-organic-super-smoothie",
+          "planned_title": "Clovis Farms Organic Super Smoothie",
+          "completed": false,
+          "actual_meal": null
+        },
+        "lunch": {
+          "planned_recipe_id": null,
+          "planned_title": null,
+          "completed": false,
+          "actual_meal": null
+        },
+        "dinner": {
+          "planned_recipe_id": null,
+          "planned_title": null,
+          "completed": false,
+          "actual_meal": null
+        }
+      },
+      "workout": {
+        "planned_workout_id": null,
+        "planned_workout_title": null,
+        "completed": false,
+        "duration_minutes": null,
+        "effort": null,
+        "equipment": null,
+        "recovery_notes": null
+      }
+    },
+    "friday": {
+      "meals": {
+        "breakfast": {
+          "planned_recipe_id": "clovis-farms-organic-super-smoothie",
+          "planned_title": "Clovis Farms Organic Super Smoothie",
+          "completed": false,
+          "actual_meal": null
+        },
+        "lunch": {
+          "planned_recipe_id": null,
+          "planned_title": null,
+          "completed": false,
+          "actual_meal": null
+        },
+        "dinner": {
+          "planned_recipe_id": null,
+          "planned_title": null,
+          "completed": false,
+          "actual_meal": null
+        }
+      },
+      "workout": {
+        "planned_workout_id": null,
+        "planned_workout_title": null,
+        "completed": false,
+        "duration_minutes": null,
+        "effort": null,
+        "equipment": null,
+        "recovery_notes": null
+      }
+    },
+    "saturday": {
+      "meals": {
+        "breakfast": {
+          "planned_recipe_id": "clovis-farms-organic-super-smoothie",
+          "planned_title": "Clovis Farms Organic Super Smoothie",
+          "completed": false,
+          "actual_meal": null
+        },
+        "lunch": {
+          "planned_recipe_id": null,
+          "planned_title": null,
+          "completed": false,
+          "actual_meal": null
+        },
+        "dinner": {
+          "planned_recipe_id": null,
+          "planned_title": null,
+          "completed": false,
+          "actual_meal": null
+        }
+      },
+      "workout": {
+        "planned_workout_id": null,
+        "planned_workout_title": null,
+        "completed": false,
+        "duration_minutes": null,
+        "effort": null,
+        "equipment": null,
+        "recovery_notes": null
+      }
+    },
+    "sunday": {
+      "meals": {
+        "breakfast": {
+          "planned_recipe_id": "clovis-farms-organic-super-smoothie",
+          "planned_title": "Clovis Farms Organic Super Smoothie",
+          "completed": false,
+          "actual_meal": null
+        },
+        "lunch": {
+          "planned_recipe_id": null,
+          "planned_title": null,
+          "completed": false,
+          "actual_meal": null
+        },
+        "dinner": {
+          "planned_recipe_id": null,
+          "planned_title": null,
+          "completed": false,
+          "actual_meal": null
+        }
+      },
+      "workout": {
+        "planned_workout_id": null,
+        "planned_workout_title": null,
+        "completed": false,
+        "duration_minutes": null,
+        "effort": null,
+        "equipment": null,
+        "recovery_notes": null
+      }
+    }
+  }
+}

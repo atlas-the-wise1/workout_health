@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "week_id": "2026-07-week1",
+  "source_repo": "atlas-the-wise1/workout_health",
+  "days": {
+    "monday": {
+      "meals": {
+        "breakfast": {
+          "actual_meal": "DAVID protein bar + Jif To Go peanut butter + apple",
+          "completed": false,
+          "notes": "Planned smoothie was not eaten."
+        }
+      },
+      "workout": {
+        "completed": false,
+        "notes": null
+      }
+    }
+  }
+}
