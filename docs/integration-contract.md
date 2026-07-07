@@ -25,7 +25,10 @@
 - Treat `recipe_list` exports as read-only inputs.
 - Write completion state only in `workout_health`.
 - Populate `source_commit` from the exact `recipe_list` commit used during import.
+- Store a provenance block with repository URL, full commit SHA, import timestamp, and source-plan checksum.
 - Generate plan, log, tracker, dashboard, and week-specific signal snapshot from the importer.
+- Keep weekly snapshots immutable unless `--force` is explicitly passed.
+- Preserve existing execution logs on re-import unless a separate reset flow is used.
 
 ## Recommended Weekly Shape
 
@@ -33,8 +36,16 @@
 {
   "schema_version": 1,
   "week_id": "2026-07-week1",
-  "source_commit": "067c609",
   "source_repo": "atlas-the-wise1/recipe_list",
+  "source_commit": "067c6090d994ff0124d55e1f6a47f8ba99c284f3",
+  "source": {
+    "repository": "atlas-the-wise1/recipe_list",
+    "repository_url": "https://github.com/atlas-the-wise1/recipe_list",
+    "commit": "067c6090d994ff0124d55e1f6a47f8ba99c284f3",
+    "imported_at": "2026-07-07T03:58:33.726Z",
+    "plan_path": "../recipe-list/meal-plans/2026-07-week1.md",
+    "plan_checksum": "sha256:03c090e3d3d2608c6d31cb1ee10f31326e22aba624068ee7416ac52a5b80db71"
+  },
   "days": {
     "monday": {
       "meals": {
@@ -59,6 +70,12 @@
   }
 }
 ```
+
+## Snapshot Rule
+
+- Weekly snapshots are immutable by default.
+- Use `--force` to replace an existing snapshot.
+- Use a separate reset flow if execution history must be cleared.
 
 ## Recommended Weekly Log Shape
 

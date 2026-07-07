@@ -2,8 +2,16 @@
   "schema_version": 1,
   "week_id": "2026-07-week1",
   "source_repo": "atlas-the-wise1/recipe_list",
-  "source_commit": "067c609",
+  "source_commit": "067c6090d994ff0124d55e1f6a47f8ba99c284f3",
   "source_plan_path": "../recipe-list/meal-plans/2026-07-week1.md",
+  "source": {
+    "repository": "atlas-the-wise1/recipe_list",
+    "repository_url": "https://github.com/atlas-the-wise1/recipe_list",
+    "commit": "067c6090d994ff0124d55e1f6a47f8ba99c284f3",
+    "imported_at": "2026-07-07T03:58:33.726Z",
+    "plan_path": "../recipe-list/meal-plans/2026-07-week1.md",
+    "plan_checksum": "sha256:03c090e3d3d2608c6d31cb1ee10f31326e22aba624068ee7416ac52a5b80db71"
+  },
   "summary": {
     "breakfast_anchor_recipe_id": "clovis-farms-organic-super-smoothie",
     "workout_sessions_planned": 3,

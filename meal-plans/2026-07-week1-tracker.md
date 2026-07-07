@@ -2,8 +2,26 @@
 
 **Goal:** keep the weekly meal-prep loop simple, repeatable, and easy to review
 **Source plan:** ../recipe-list/meal-plans/2026-07-week1.md
-**Source commit:** `atlas-the-wise1/recipe_list@067c609`
+**Source repository:** https://github.com/atlas-the-wise1/recipe_list
+**Source commit:** `067c6090d994ff0124d55e1f6a47f8ba99c284f3`
+**Import time:** 2026-07-07T03:58:33.726Z
+**Plan checksum:** `sha256:03c090e3d3d2608c6d31cb1ee10f31326e22aba624068ee7416ac52a5b80db71`
 **Import note:** atlas-the-wise1/recipe_list owns recipes and indexes; `workout_health` owns actuals, workouts, and adherence.
+
+## Provenance
+
+```json
+{
+  "schema_version": 1,
+  "source": {
+    "repository": "https://github.com/atlas-the-wise1/recipe_list",
+    "commit": "067c6090d994ff0124d55e1f6a47f8ba99c284f3",
+    "plan_path": "../recipe-list/meal-plans/2026-07-week1.md",
+    "plan_checksum": "sha256:03c090e3d3d2608c6d31cb1ee10f31326e22aba624068ee7416ac52a5b80db71",
+    "imported_at": "2026-07-07T03:58:33.726Z"
+  }
+}
+```
 
 ## Weekly Prep Checklist
 

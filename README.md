@@ -20,7 +20,9 @@ Weekly workout and meal tracking workspace.
 ## Integration Contract
 
 - `recipe_list` is imported as read-only source data.
-- `source_commit` is derived from the exact `recipe_list` commit used during import.
+- `source_commit` is the exact full `recipe_list` commit used during import.
+- The importer writes a provenance block with repository URL, full commit SHA, import timestamp, and plan checksum.
 - Plans keep only intended meals/workouts.
 - Logs keep completion, actual meals, effort, recovery, and notes.
 - The dashboard and tracker are generated from the imported plan + log pair.
+- Weekly snapshots are immutable unless `--force` is explicitly passed.

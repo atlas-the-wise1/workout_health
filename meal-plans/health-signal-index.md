@@ -1,5 +1,12 @@
 # Weekly Health Signal Snapshot
 
+## Provenance
+
+- Repository: https://github.com/atlas-the-wise1/recipe_list
+- Commit: 067c6090d994ff0124d55e1f6a47f8ba99c284f3
+- Imported at: 2026-07-07T03:58:33.726Z
+- Plan checksum: sha256:03c090e3d3d2608c6d31cb1ee10f31326e22aba624068ee7416ac52a5b80db71
+
 Generated from `/home/atlas/projects/recipe-list/indexes/recipes.json` and the imported weekly plan.
 
 | Recipe ID | Recipe | Category | Score | Source |

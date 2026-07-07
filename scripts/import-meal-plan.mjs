@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
+import { readFile, writeFile, mkdir, access } from 'node:fs/promises';
 import { readFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { execFileSync } from 'node:child_process';
@@ -22,6 +23,8 @@ function parseArgs(argv) {
     outputRoot: process.cwd(),
     existingLog: null,
     weekId: null,
+    week: null,
+    force: false,
     writeArtifacts: true,
   };
 
@@ -37,6 +40,10 @@ function parseArgs(argv) {
       args.existingLog = argv[++i];
     } else if (token === '--week-id') {
       args.weekId = argv[++i];
+    } else if (token === '--week') {
+      args.week = argv[++i];
+    } else if (token === '--force') {
+      args.force = true;
     } else if (token === '--no-artifacts') {
       args.writeArtifacts = false;
     } else if (token === '--help' || token === '-h') {
@@ -46,12 +53,19 @@ function parseArgs(argv) {
     }
   }
 
-  if (!args.sourcePlan) {
-    throw new Error('Missing required argument: --source-plan');
-  }
-
   if (!args.sourceRepo) {
     args.sourceRepo = '../recipe-list';
+  }
+
+  if (args.week && !args.weekId) {
+    args.weekId = args.week;
+  }
+
+  if (!args.sourcePlan) {
+    if (!args.weekId) {
+      throw new Error('Missing required argument: --source-plan or --week');
+    }
+    args.sourcePlan = `../recipe-list/meal-plans/${args.weekId}.md`;
   }
 
   return args;
@@ -60,7 +74,8 @@ function parseArgs(argv) {
 function printUsageAndExit() {
   process.stdout.write([
     'Usage:',
-    '  node scripts/import-meal-plan.mjs --source-plan <path> [--source-repo <path>] [--output-root <path>] [--existing-log <path>] [--week-id <week_id>]',
+    '  node scripts/import-meal-plan.mjs --source-plan <path> [--source-repo <path>] [--output-root <path>] [--existing-log <path>] [--week <week_id>] [--force]',
+    '  node scripts/import-meal-plan.mjs --week <week_id> [--force]',
     '',
     'Generates:',
     '  data/plans/<week_id>.json',
@@ -71,6 +86,14 @@ function printUsageAndExit() {
     '',
   ].join('\n'));
   process.exit(0);
+}
+
+function sha256Hex(content) {
+  return createHash('sha256').update(content).digest('hex');
+}
+
+function getIsoTimestamp() {
+  return new Date().toISOString();
 }
 
 function normalizeText(value) {
@@ -165,7 +188,7 @@ function cloneMealPlan(planMeal, recipe) {
   };
 }
 
-function buildPlannedPlan(sourcePlan, recipeIndex, sourceRepo, sourceCommit, sourcePlanPath) {
+function buildPlannedPlan(sourcePlan, recipeIndex, sourceMeta) {
   const weekId = sourcePlan.weekId;
   const days = {};
   const selectedRecipes = new Map();
@@ -201,9 +224,17 @@ function buildPlannedPlan(sourcePlan, recipeIndex, sourceRepo, sourceCommit, sou
     plan: {
       schema_version: 1,
       week_id: weekId,
-      source_repo: sourceRepo,
-      source_commit: sourceCommit,
-      source_plan_path: sourcePlanPath,
+      source_repo: sourceMeta.repositoryName,
+      source_commit: sourceMeta.commitFull,
+      source_plan_path: sourceMeta.sourcePlanPath,
+      source: {
+        repository: sourceMeta.repositoryName,
+        repository_url: sourceMeta.repositoryUrl,
+        commit: sourceMeta.commitFull,
+        imported_at: sourceMeta.importedAt,
+        plan_path: sourceMeta.sourcePlanPath,
+        plan_checksum: sourceMeta.planChecksum,
+      },
       summary: {
         breakfast_anchor_recipe_id: breakfastAnchor,
         workout_sessions_planned: 3,
@@ -300,8 +331,26 @@ function renderTrackerMarkdown(plan, log, sourceMeta) {
   lines.push('');
   lines.push(`**Goal:** keep the weekly meal-prep loop simple, repeatable, and easy to review`);
   lines.push(`**Source plan:** ${sourceMeta.sourcePlanPath}`);
-  lines.push(`**Source commit:** \`${sourceMeta.sourceRepoName}@${sourceMeta.sourceCommit}\``);
-  lines.push(`**Import note:** ${sourceMeta.sourceRepoName} owns recipes and indexes; \`workout_health\` owns actuals, workouts, and adherence.`);
+  lines.push(`**Source repository:** ${sourceMeta.repositoryUrl}`);
+  lines.push(`**Source commit:** \`${sourceMeta.commitFull}\``);
+  lines.push(`**Import time:** ${sourceMeta.importedAt}`);
+  lines.push(`**Plan checksum:** \`${sourceMeta.planChecksum}\``);
+  lines.push(`**Import note:** ${sourceMeta.repositoryName} owns recipes and indexes; \`workout_health\` owns actuals, workouts, and adherence.`);
+  lines.push('');
+  lines.push('## Provenance');
+  lines.push('');
+  lines.push('```json');
+  lines.push(JSON.stringify({
+    schema_version: 1,
+    source: {
+      repository: sourceMeta.repositoryUrl,
+      commit: sourceMeta.commitFull,
+      plan_path: sourceMeta.sourcePlanPath,
+      plan_checksum: sourceMeta.planChecksum,
+      imported_at: sourceMeta.importedAt,
+    },
+  }, null, 2));
+  lines.push('```');
   lines.push('');
   lines.push('## Weekly Prep Checklist');
   lines.push('');
@@ -413,6 +462,8 @@ function renderDashboardHtml(plan, log, sourceMeta, selectedRecipes) {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="x-workout-health-plan-checksum" content="${escapeHtml(sourceMeta.planChecksum)}" />
+  <meta name="x-workout-health-imported-at" content="${escapeHtml(sourceMeta.importedAt)}" />
   <title>${escapeHtml(plan.week_id)} Meal Prep Dashboard</title>
   <style>
     :root {
@@ -785,6 +836,10 @@ function renderDashboardHtml(plan, log, sourceMeta, selectedRecipes) {
         The recipe plan is read from ${escapeHtml(sourceMeta.sourcePlanPath)} and the current execution log stays in
         workout_health. Planned activity lives in the plan, actuals live in the log, and the dashboard is rendered from both.
       </p>
+      <div class="pill-row" style="margin-top: 12px;">
+        <span class="pill"><strong>Checksum</strong> ${escapeHtml(sourceMeta.planChecksum)}</span>
+        <span class="pill"><strong>Imported</strong> ${escapeHtml(sourceMeta.importedAt)}</span>
+      </div>
       <div class="pill-row">
         <a class="pill" href="./${escapeHtml(sourceMeta.trackerFileName)}"><strong>Tracker</strong> Weekly planning sheet</a>
         <a class="pill" href="${escapeHtml(sourceMeta.breakfastRecipeUrl)}"><strong>Breakfast</strong> Clovis anchor</a>
@@ -835,9 +890,12 @@ function renderDashboardHtml(plan, log, sourceMeta, selectedRecipes) {
           <div class="session">
             <div class="session-title">Plan metadata</div>
             <div class="session-meta">
-              Source commit: ${escapeHtml(sourceMeta.sourceRepoName)}@${escapeHtml(sourceMeta.sourceCommit)}<br />
+              Source repository: ${escapeHtml(sourceMeta.repositoryUrl)}<br />
+              Source commit: ${escapeHtml(sourceMeta.commitFull)}<br />
               Source plan: ${escapeHtml(sourceMeta.sourcePlanPath)}<br />
-              Source index: ${escapeHtml(sourceMeta.recipeIndexPath)}
+              Source index: ${escapeHtml(sourceMeta.recipeIndexPath)}<br />
+              Imported at: ${escapeHtml(sourceMeta.importedAt)}<br />
+              Plan checksum: ${escapeHtml(sourceMeta.planChecksum)}
             </div>
           </div>
           <div class="session">
@@ -959,6 +1017,13 @@ function renderSignalSnapshot(selectedRecipes, recipeIndex, sourceMeta) {
   const lines = [];
   lines.push('# Weekly Health Signal Snapshot');
   lines.push('');
+  lines.push('## Provenance');
+  lines.push('');
+  lines.push(`- Repository: ${sourceMeta.repositoryUrl}`);
+  lines.push(`- Commit: ${sourceMeta.commitFull}`);
+  lines.push(`- Imported at: ${sourceMeta.importedAt}`);
+  lines.push(`- Plan checksum: ${sourceMeta.planChecksum}`);
+  lines.push('');
   lines.push(`Generated from \`${sourceMeta.recipeIndexPath}\` and the imported weekly plan.`);
   lines.push('');
   lines.push('| Recipe ID | Recipe | Category | Score | Source |');
@@ -980,23 +1045,28 @@ async function main() {
   const sourcePlanMarkdown = await readFile(sourcePlanPath, 'utf8');
   const sourcePlan = parseWeeklyPlanMarkdown(sourcePlanMarkdown);
   const recipeIndex = loadRecipeIndex(sourceRepoPath);
-  const sourceCommit = execFileSync('git', ['-C', sourceRepoPath, 'rev-parse', '--short', 'HEAD'], { encoding: 'utf8' }).trim();
+  const sourceCommit = execFileSync('git', ['-C', sourceRepoPath, 'rev-parse', 'HEAD'], { encoding: 'utf8' }).trim();
   const sourceRepoName = 'atlas-the-wise1/recipe_list';
+  const sourceRepoUrl = 'https://github.com/atlas-the-wise1/recipe_list';
+  const importedAt = getIsoTimestamp();
+  const planChecksum = `sha256:${sha256Hex(sourcePlanMarkdown)}`;
   const sourceMeta = {
     sourcePlanPath: args.sourcePlan,
-    sourceRepoName,
-    sourceCommit,
+    repositoryName: sourceRepoName,
+    repositoryUrl: sourceRepoUrl,
+    commitFull: sourceCommit,
+    importedAt,
+    planChecksum,
     recipeIndexPath: recipeIndex.indexPath,
     trackerFileName: `${sourcePlan.weekId}-tracker.md`,
-    breakfastRecipeUrl: `https://github.com/atlas-the-wise1/recipe_list/blob/main/recipes/breakfast/clovis-farms-organic-super-smoothie.md`,
+    recipeIndexUrl: `${sourceRepoUrl}/blob/main/indexes/recipes.json`,
+    breakfastRecipeUrl: `${sourceRepoUrl}/blob/main/recipes/breakfast/clovis-farms-organic-super-smoothie.md`,
   };
 
   const { plan, selectedRecipes } = buildPlannedPlan(
     sourcePlan,
     recipeIndex,
-    sourceRepoName,
-    sourceCommit,
-    args.sourcePlan,
+    sourceMeta,
   );
 
   const existingLogPath = args.existingLog
@@ -1019,9 +1089,33 @@ async function main() {
   await writeFile(logPath, `${JSON.stringify(log, null, 2)}\n`);
 
   if (args.writeArtifacts) {
-    await writeFile(trackerPath, `${renderTrackerMarkdown(plan, log, sourceMeta)}\n`);
-    await writeFile(dashboardPath, `${renderDashboardHtml(plan, log, sourceMeta, selectedRecipes)}\n`);
-    await writeFile(snapshotPath, `${renderSignalSnapshot(selectedRecipes, recipeIndex, sourceMeta)}\n`);
+    const trackerContent = `${renderTrackerMarkdown(plan, log, sourceMeta)}\n`;
+    const dashboardContent = `${renderDashboardHtml(plan, log, sourceMeta, selectedRecipes)}\n`;
+    const snapshotContent = `${renderSignalSnapshot(selectedRecipes, recipeIndex, sourceMeta)}\n`;
+
+    if (!trackerContent.includes(sourceMeta.planChecksum)) {
+      throw new Error('Tracker provenance checksum mismatch');
+    }
+    if (!dashboardContent.includes(sourceMeta.planChecksum)) {
+      throw new Error('Dashboard provenance checksum mismatch');
+    }
+    if (!snapshotContent.includes(sourceMeta.planChecksum)) {
+      throw new Error('Snapshot provenance checksum mismatch');
+    }
+
+    await writeFile(trackerPath, trackerContent);
+    await writeFile(dashboardPath, dashboardContent);
+
+    let snapshotExists = true;
+    try {
+      await access(snapshotPath);
+    } catch {
+      snapshotExists = false;
+    }
+
+    if (!snapshotExists || args.force) {
+      await writeFile(snapshotPath, snapshotContent);
+    }
   }
 }
 
