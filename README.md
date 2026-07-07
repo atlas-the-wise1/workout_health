@@ -15,9 +15,12 @@ Weekly workout and meal tracking workspace.
 - [Machine-readable plan](data/plans/2026-07-week1.json)
 - [Weekly log](data/logs/2026-07-week1.json)
 - [Health signal snapshot](meal-plans/health-signal-index.md)
+- [Importer](scripts/import-meal-plan.mjs)
 
 ## Integration Contract
 
-- Recipe links should point back to `recipe_list` with full GitHub URLs.
-- Weekly plans should carry `recipe_id` and `workout_id` fields, not repo-relative paths.
-- Actual completion should live in `workout_health`, not in the recipe source repo.
+- `recipe_list` is imported as read-only source data.
+- `source_commit` is derived from the exact `recipe_list` commit used during import.
+- Plans keep only intended meals/workouts.
+- Logs keep completion, actual meals, effort, recovery, and notes.
+- The dashboard and tracker are generated from the imported plan + log pair.

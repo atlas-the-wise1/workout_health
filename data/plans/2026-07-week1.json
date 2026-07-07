@@ -3,6 +3,7 @@
   "week_id": "2026-07-week1",
   "source_repo": "atlas-the-wise1/recipe_list",
   "source_commit": "067c609",
+  "source_plan_path": "../recipe-list/meal-plans/2026-07-week1.md",
   "summary": {
     "breakfast_anchor_recipe_id": "clovis-farms-organic-super-smoothie",
     "workout_sessions_planned": 3,
@@ -13,217 +14,140 @@
       "meals": {
         "breakfast": {
           "planned_recipe_id": "clovis-farms-organic-super-smoothie",
-          "planned_title": "Clovis Farms Organic Super Smoothie",
-          "completed": false,
-          "actual_meal": null
+          "planned_title": "Clovis Farms Organic Super Smoothie"
         },
         "lunch": {
-          "planned_recipe_id": null,
-          "planned_title": null,
-          "completed": false,
-          "actual_meal": null
+          "planned_recipe_id": "tuna-crunch-sandwiches",
+          "planned_title": "Tuna Crunch Sandwiches"
         },
         "dinner": {
-          "planned_recipe_id": null,
-          "planned_title": null,
-          "completed": false,
-          "actual_meal": null
+          "planned_recipe_id": "rotisserie-chicken-greens-pasta",
+          "planned_title": "Rotisserie Chicken and Greens Pasta"
         }
       },
       "workout": {
         "planned_workout_id": null,
-        "planned_workout_title": null,
-        "completed": false,
-        "duration_minutes": null,
-        "effort": null,
-        "equipment": null,
-        "recovery_notes": null
+        "planned_workout_title": null
       }
     },
     "tuesday": {
       "meals": {
         "breakfast": {
           "planned_recipe_id": "clovis-farms-organic-super-smoothie",
-          "planned_title": "Clovis Farms Organic Super Smoothie",
-          "completed": false,
-          "actual_meal": null
+          "planned_title": "Clovis Farms Organic Super Smoothie"
         },
         "lunch": {
-          "planned_recipe_id": null,
-          "planned_title": null,
-          "completed": false,
-          "actual_meal": null
+          "planned_recipe_id": "rotisserie-chicken-greens-pasta",
+          "planned_title": "Rotisserie Chicken and Greens Pasta"
         },
         "dinner": {
-          "planned_recipe_id": null,
-          "planned_title": null,
-          "completed": false,
-          "actual_meal": null
+          "planned_recipe_id": "baked-lemon-herb-tilapia",
+          "planned_title": "Baked Lemon Herb Tilapia"
         }
       },
       "workout": {
         "planned_workout_id": null,
-        "planned_workout_title": null,
-        "completed": false,
-        "duration_minutes": null,
-        "effort": null,
-        "equipment": null,
-        "recovery_notes": null
+        "planned_workout_title": null
       }
     },
     "wednesday": {
       "meals": {
         "breakfast": {
           "planned_recipe_id": "clovis-farms-organic-super-smoothie",
-          "planned_title": "Clovis Farms Organic Super Smoothie",
-          "completed": false,
-          "actual_meal": null
+          "planned_title": "Clovis Farms Organic Super Smoothie"
         },
         "lunch": {
-          "planned_recipe_id": null,
-          "planned_title": null,
-          "completed": false,
-          "actual_meal": null
+          "planned_recipe_id": "taiwanese-meefun",
+          "planned_title": "Taiwanese Meefun"
         },
         "dinner": {
-          "planned_recipe_id": null,
-          "planned_title": null,
-          "completed": false,
-          "actual_meal": null
+          "planned_recipe_id": "lemon-herb-grilled-chicken-breast",
+          "planned_title": "Lemon Herb Grilled Chicken Breast"
         }
       },
       "workout": {
         "planned_workout_id": null,
-        "planned_workout_title": null,
-        "completed": false,
-        "duration_minutes": null,
-        "effort": null,
-        "equipment": null,
-        "recovery_notes": null
+        "planned_workout_title": null
       }
     },
     "thursday": {
       "meals": {
         "breakfast": {
           "planned_recipe_id": "clovis-farms-organic-super-smoothie",
-          "planned_title": "Clovis Farms Organic Super Smoothie",
-          "completed": false,
-          "actual_meal": null
+          "planned_title": "Clovis Farms Organic Super Smoothie"
         },
         "lunch": {
-          "planned_recipe_id": null,
-          "planned_title": null,
-          "completed": false,
-          "actual_meal": null
+          "planned_recipe_id": "orecchiette-salad-with-halloumi-croutons",
+          "planned_title": "Orecchiette Salad With Halloumi Croutons"
         },
         "dinner": {
-          "planned_recipe_id": null,
-          "planned_title": null,
-          "completed": false,
-          "actual_meal": null
+          "planned_recipe_id": "rotisserie-chicken-greens-pasta-healthier",
+          "planned_title": "Rotisserie Chicken and Greens Pasta — Healthier Variant"
         }
       },
       "workout": {
         "planned_workout_id": null,
-        "planned_workout_title": null,
-        "completed": false,
-        "duration_minutes": null,
-        "effort": null,
-        "equipment": null,
-        "recovery_notes": null
+        "planned_workout_title": null
       }
     },
     "friday": {
       "meals": {
         "breakfast": {
           "planned_recipe_id": "clovis-farms-organic-super-smoothie",
-          "planned_title": "Clovis Farms Organic Super Smoothie",
-          "completed": false,
-          "actual_meal": null
+          "planned_title": "Clovis Farms Organic Super Smoothie"
         },
         "lunch": {
-          "planned_recipe_id": null,
-          "planned_title": null,
-          "completed": false,
-          "actual_meal": null
+          "planned_recipe_id": "rotisserie-chicken-greens-pasta-healthier",
+          "planned_title": "Rotisserie Chicken and Greens Pasta — Healthier Variant"
         },
         "dinner": {
-          "planned_recipe_id": null,
-          "planned_title": null,
-          "completed": false,
-          "actual_meal": null
+          "planned_recipe_id": "roasted-turkey-meatballs-mozzarella-scallions",
+          "planned_title": "Roasted Turkey Meatballs With Mozzarella and Scallions"
         }
       },
       "workout": {
         "planned_workout_id": null,
-        "planned_workout_title": null,
-        "completed": false,
-        "duration_minutes": null,
-        "effort": null,
-        "equipment": null,
-        "recovery_notes": null
+        "planned_workout_title": null
       }
     },
     "saturday": {
       "meals": {
         "breakfast": {
           "planned_recipe_id": "clovis-farms-organic-super-smoothie",
-          "planned_title": "Clovis Farms Organic Super Smoothie",
-          "completed": false,
-          "actual_meal": null
+          "planned_title": "Clovis Farms Organic Super Smoothie"
         },
         "lunch": {
-          "planned_recipe_id": null,
-          "planned_title": null,
-          "completed": false,
-          "actual_meal": null
+          "planned_recipe_id": "farro-with-blistered-tomatoes-pesto-and-spinach",
+          "planned_title": "Farro With Blistered Tomatoes, Pesto and Spinach"
         },
         "dinner": {
-          "planned_recipe_id": null,
-          "planned_title": null,
-          "completed": false,
-          "actual_meal": null
+          "planned_recipe_id": "air-fryer-chicken-breast",
+          "planned_title": "Air-Fryer Chicken Breast"
         }
       },
       "workout": {
         "planned_workout_id": null,
-        "planned_workout_title": null,
-        "completed": false,
-        "duration_minutes": null,
-        "effort": null,
-        "equipment": null,
-        "recovery_notes": null
+        "planned_workout_title": null
       }
     },
     "sunday": {
       "meals": {
         "breakfast": {
           "planned_recipe_id": "clovis-farms-organic-super-smoothie",
-          "planned_title": "Clovis Farms Organic Super Smoothie",
-          "completed": false,
-          "actual_meal": null
+          "planned_title": "Clovis Farms Organic Super Smoothie"
         },
         "lunch": {
-          "planned_recipe_id": null,
-          "planned_title": null,
-          "completed": false,
-          "actual_meal": null
+          "planned_recipe_id": "double-turkey-burger-on-brioche",
+          "planned_title": "Double Turkey Burger on Brioche"
         },
         "dinner": {
-          "planned_recipe_id": null,
-          "planned_title": null,
-          "completed": false,
-          "actual_meal": null
+          "planned_recipe_id": "air-fryer-salmon",
+          "planned_title": "Air-Fryer Salmon"
         }
       },
       "workout": {
         "planned_workout_id": null,
-        "planned_workout_title": null,
-        "completed": false,
-        "duration_minutes": null,
-        "effort": null,
-        "equipment": null,
-        "recovery_notes": null
+        "planned_workout_title": null
       }
     }
   }
